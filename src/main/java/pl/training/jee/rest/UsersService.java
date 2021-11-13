@@ -16,4 +16,9 @@ public class UsersService {
         return usersRepository.save(user);
     }
 
+    public User getById(String id) {
+        return usersRepository.getById(id)
+                .orElseThrow(UserNotFoundException::new);
+    }
+
 }

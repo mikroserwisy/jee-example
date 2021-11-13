@@ -15,4 +15,11 @@ public class UsersModelMapper {
         return user;
     }
 
+    public UserDto toUserDto(User user) {
+        var userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setFullName(user.getFirstName() + SEPARATOR + user.getLastName());
+        return userDto;
+    }
+
 }

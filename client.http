@@ -5,3 +5,11 @@ Accept: application/json
 {
   "fullName": "Jan Kowalski"
 }
+
+###
+
+GET http://localhost:8080/jee-1.0-SNAPSHOT/api/users/7f84adb3-3274-426e-a8df-01e1eaddb043
+Content-Type: application/json
+Accept: application/json
+
+###
