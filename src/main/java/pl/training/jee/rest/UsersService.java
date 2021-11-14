@@ -21,4 +21,13 @@ public class UsersService {
                 .orElseThrow(UserNotFoundException::new);
     }
 
+    public void deleteById(String id) {
+        usersRepository.deleteById(id);
+    }
+
+    public User update(User user) {
+        getById(user.getId());
+        return usersRepository.update(user);
+    }
+
 }

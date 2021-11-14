@@ -24,4 +24,15 @@ public class InMemoryUsersRepository implements UsersRepository {
         return Optional.ofNullable(users.get(id));
     }
 
+    @Override
+    public void deleteById(String id) {
+        users.remove(id);
+    }
+
+    @Override
+    public User update(User user) {
+        users.put(user.getId(), user);
+        return user;
+    }
+
 }

@@ -8,8 +8,22 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/jee-1.0-SNAPSHOT/api/users/7f84adb3-3274-426e-a8df-01e1eaddb043
+GET http://localhost:8080/jee-1.0-SNAPSHOT/api/users/5ee4f728-220c-4436-acc9-680a1ba41ad1
 Content-Type: application/json
 Accept: application/json
 
 ###
+
+DELETE http://localhost:8080/jee-1.0-SNAPSHOT/api/users/46ef4ffb-2de2-4579-9618-6c5901c6efde
+Content-Type: application/json
+Accept: application/json
+
+###
+
+PUT http://localhost:8080/jee-1.0-SNAPSHOT/api/users/d3124926-63e2-4c12-a7cd-728b3e736aae
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fullName": "Jan Nowak"
+}

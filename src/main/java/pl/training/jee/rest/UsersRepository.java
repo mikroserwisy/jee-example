@@ -8,4 +8,8 @@ public interface UsersRepository {
 
     Optional<User> getById(String id);
 
+    void deleteById(String id);
+
+    User update(User user);
+
 }

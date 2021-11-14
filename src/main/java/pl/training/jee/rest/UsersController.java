@@ -2,10 +2,7 @@ package pl.training.jee.rest;
 
 import javax.ejb.EJB;
 import javax.validation.Valid;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -35,6 +32,21 @@ public class UsersController {
     public UserDto getById(@PathParam("id") String id) {
         var user = usersService.getById(id);
         return mapper.toUserDto(user);
+    }
+
+    @PUT
+    @Path("{id:\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{12}}")
+    public UserDto update(@PathParam("id") String id, @Valid UserDto userDto) {
+        var user = mapper.toModel(userDto);
+        user.setId(id);
+        return mapper.toUserDto(usersService.update(user));
+    }
+
+    @DELETE
+    @Path("{id:\\w{8}-\\w{4}-\\w{4}-\\w{4}-\\w{12}}")
+    public Response deleteById(@PathParam("id") String id) {
+        usersService.deleteById(id);
+        return Response.noContent().build();
     }
 
     private URI getLocation(String id) {
