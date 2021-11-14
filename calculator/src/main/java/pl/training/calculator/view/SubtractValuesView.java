@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 @RequiredArgsConstructor(onConstructor_ = @Inject)
-public class AddValuesView implements View {
+public class SubtractValuesView implements View {
 
     private final CalculatorController calculatorController;
     private final Scanner scanner;
@@ -20,7 +20,7 @@ public class AddValuesView implements View {
         var firstNumber = scanner.nextBigDecimal();
         System.out.println("Podaj drugą liczbę");
         var secondNumber = scanner.nextBigDecimal();
-        calculatorController.addNumbers(firstNumber, secondNumber);
+        calculatorController.subtractNumbers(firstNumber, secondNumber);
     }
 
 }

@@ -8,10 +8,7 @@ public class Main {
     public static void main(String[] args) {
         var weld = new Weld();
         var container = weld.initialize();
-
-        var controller = container.select(CalculatorController.class).get();
-        controller.showMenu();
-
+        container.select(CalculatorController.class).get().showMenu();
         container.shutdown();
     }
 

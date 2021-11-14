@@ -1,16 +1,16 @@
 package pl.training.calculator.view;
 
 import jakarta.inject.Inject;
+import lombok.RequiredArgsConstructor;
+import pl.training.calculator.common.View;
 import pl.training.calculator.controller.CalculatorController;
 
 import java.util.Map;
 
-public class ResultView extends TextView {
+@RequiredArgsConstructor(onConstructor_ = @Inject)
+public class ResultView implements View {
 
-    @Inject
-    public ResultView(CalculatorController calculatorController) {
-        super(calculatorController);
-    }
+    private final CalculatorController calculatorController;
 
     @Override
     public void render(Map<String, Object> data) {
