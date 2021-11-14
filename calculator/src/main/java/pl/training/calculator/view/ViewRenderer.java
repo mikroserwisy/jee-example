@@ -1,39 +1,29 @@
 package pl.training.calculator.view;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.inject.Any;
+import jakarta.enterprise.inject.Instance;
 import jakarta.inject.Inject;
 import lombok.Setter;
 
-import java.util.Collections;
-
-import static java.util.Collections.emptyMap;
+import java.util.HashMap;
+import java.util.Map;
 
 @Setter
 public class ViewRenderer {
 
-    @Inject
-    private MenuTextView menuView;
-    @Inject
-    private AddValuesFormTextView addView;
-    @Inject
-    private ResultTextView resultView;
+    @Inject @Any
+    private Instance<View> views;
+    private Map<String, View> viewsMap = new HashMap<>();
 
-    public void onModelAndView(@Observes ModelAndView modelAndView) {
-        TextView textView;
-        switch (modelAndView.getViewName()) {
-            case "menu":
-                textView = menuView;
-                break;
-            case "add":
-                textView = addView;
-                break;
-            case "result":
-                textView = resultView;
-                break;
-            default:
-                throw  new IllegalStateException();
-        }
-        textView.render(modelAndView.getData());
+    @PostConstruct
+    public void init() {
+        views.forEach(view -> viewsMap.put(view.getName(), view));
+    }
+
+    public void onRender(@Observes ModelAndView modelAndView) {
+        viewsMap.get(modelAndView.getViewName()).render(modelAndView.getData());
     }
 
 }

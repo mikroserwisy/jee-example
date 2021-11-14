@@ -20,13 +20,13 @@ public class CalculatorController {
     }
 
     public void showDefaultView() {
-        dispatcher.fire(new ModelAndView("menu"));
+        dispatcher.fire(new ModelAndView("MenuTextView"));
     }
 
     public void optionSelected(String option) {
         switch (option) {
             case "1":
-                dispatcher.fire(new ModelAndView("add"));
+                dispatcher.fire(new ModelAndView("AddValuesTextView"));
                 break;
             default:
                 throw new IllegalStateException();
@@ -35,6 +35,7 @@ public class CalculatorController {
 
     public void addNumbers(String firstNumber, String secondNumber) {
         var result = calculator.add(new BigDecimal(firstNumber), new BigDecimal(secondNumber));
-        dispatcher.fire(new ModelAndView("result", Map.of("result", result)));
+        dispatcher.fire(new ModelAndView("ResultTextView", Map.of("result", result)));
     }
+
 }

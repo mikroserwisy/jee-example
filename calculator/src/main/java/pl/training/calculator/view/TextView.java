@@ -14,4 +14,8 @@ public abstract class TextView implements View {
         this.calculatorController = calculatorController;
     }
 
+    public String getName() {
+        return getClass().getSimpleName();
+    }
+
 }
