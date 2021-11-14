@@ -5,10 +5,10 @@ import pl.training.calculator.controller.CalculatorController;
 
 import java.util.Map;
 
-public class AddValuesTextView extends TextView {
+public class AddValuesView extends TextView {
 
     @Inject
-    public AddValuesTextView(CalculatorController calculatorController) {
+    public AddValuesView(CalculatorController calculatorController) {
         super(calculatorController);
     }
 

@@ -5,10 +5,10 @@ import pl.training.calculator.controller.CalculatorController;
 
 import java.util.Map;
 
-public class MenuTextView extends TextView {
+public class MenuView extends TextView {
 
     @Inject
-    public MenuTextView(CalculatorController calculatorController) {
+    public MenuView(CalculatorController calculatorController) {
         super(calculatorController);
     }
 
@@ -19,7 +19,7 @@ public class MenuTextView extends TextView {
         System.out.println("2 - Usuń");
         System.out.println("3 - Wyjdź");
         var option = scanner.next();
-        calculatorController.optionSelected(option);
+        calculatorController.menuOptionSelected(option);
     }
 
 }

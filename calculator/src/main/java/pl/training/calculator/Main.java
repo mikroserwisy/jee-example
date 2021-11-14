@@ -10,7 +10,7 @@ public class Main {
         var container = weld.initialize();
 
         var controller = container.select(CalculatorController.class).get();
-        controller.showDefaultView();
+        controller.showMenu();
 
         container.shutdown();
     }
