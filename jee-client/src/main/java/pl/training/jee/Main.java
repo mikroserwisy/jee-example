@@ -1,17 +1,10 @@
 package pl.training.jee;
 
-import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
-import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.internal.ResteasyClientBuilderImpl;
-import org.jboss.resteasy.plugins.providers.jaxb.JAXBXmlTypeProvider;
+import pl.training.jee.rest.UserDto;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSContext;
-import javax.jms.Topic;
 import javax.naming.NamingException;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.MediaType;
-import java.util.Map;
 
 public class Main {
 
@@ -33,14 +26,18 @@ public class Main {
             jmsContext.createProducer().send(topic, "Hello JMS!");
         }*/
 
-        var restClient = new ResteasyClientBuilderImpl().build();
+        var restClient = new ResteasyClientBuilderImpl()
+                .register(BinaryMapper.class)
+                .build();
         var resource = restClient.target(USERS_RESOURCE);
 
         var userDto = new UserDto();
         userDto.setFullName("Marek Nowak");
         var response = resource.request()
-                .accept(MediaType.APPLICATION_JSON_TYPE)
-                .post(Entity.entity(userDto, MediaType.APPLICATION_XML));
+                .accept(BinaryMapper.MEDIA_TYPE)
+                //.accept(MediaType.APPLICATION_JSON_TYPE)
+                .post(Entity.entity(userDto, BinaryMapper.MEDIA_TYPE));
+                //.post(Entity.entity(userDto, MediaType.APPLICATION_XML));
         System.out.println("Status: " + response.getStatus());
         System.out.println(response.readEntity(UserDto.class));
     }

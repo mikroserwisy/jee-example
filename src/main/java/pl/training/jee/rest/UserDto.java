@@ -5,11 +5,12 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Data
-public class UserDto {
+public class UserDto implements Serializable {
 
     @XmlTransient
     private String id;

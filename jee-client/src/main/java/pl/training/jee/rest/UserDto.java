@@ -1,12 +1,13 @@
-package pl.training.jee;
+package pl.training.jee.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class UserDto {
+public class UserDto implements Serializable {
 
     @XmlTransient
     private String id;

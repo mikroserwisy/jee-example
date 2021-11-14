@@ -1,6 +1,6 @@
 POST http://localhost:8080/jee-1.0-SNAPSHOT/api/users
 Content-Type: application/json
-Accept: application/json
+Accept: application/binary-data
 
 {
   "fullName": "Jan Kowalski"
