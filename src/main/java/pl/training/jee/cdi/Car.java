@@ -14,10 +14,11 @@ import javax.inject.Inject;
 @Log
 public class Car implements Vehicle {
 
-    private final Engine engine;
-
+    @Any
     @Inject
-    public Car(@Any Engine engine) {
+    private Engine engine;
+
+    public void setEngine(Engine engine) {
         this.engine = engine;
     }
 
@@ -25,6 +26,11 @@ public class Car implements Vehicle {
     @Override
     public void go() {
         engine.start();
+    }
+
+    @Override
+    public void printInfo() {
+        log.info("OK");
     }
 
     @PostConstruct
@@ -36,6 +42,5 @@ public class Car implements Vehicle {
     public void preDestroy() {
         log.info(getClass().getSimpleName() + " is shutting down");
     }
-
 
 }

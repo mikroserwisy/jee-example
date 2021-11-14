@@ -14,4 +14,8 @@
         <class>pl.training.jee.cdi.LoggerInterceptor</class>
     </interceptors>
 
+    <decorators>
+        <class>pl.training.jee.cdi.SmartCar</class>
+    </decorators>
+
 </beans>
