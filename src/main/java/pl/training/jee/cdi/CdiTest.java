@@ -8,10 +8,16 @@ import javax.ejb.Startup;
 @Singleton
 public class CdiTest {
 
+    public Vehicle vehicle() {
+        var logger = new VehicleLogger();
+        var car = new Car(new DieselEngine());
+        return  new CarProxy(car, logger);
+    }
+
     @PostConstruct
     public void start() {
-        var car = new Car();
-        car.go();
+        var vehicle = vehicle();
+        vehicle.go();
     }
 
 }
