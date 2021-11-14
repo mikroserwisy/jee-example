@@ -4,4 +4,14 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
        bean-discovery-mode="all">
+
+    <alternatives>
+        <class>pl.training.jee.cdi.DieselEngine</class>
+    </alternatives>
+
+    <interceptors>
+        <class>pl.training.jee.cdi.StopperInterceptor</class>
+        <class>pl.training.jee.cdi.LoggerInterceptor</class>
+    </interceptors>
+
 </beans>

@@ -5,13 +5,13 @@ import lombok.extern.java.Log;
 import javax.enterprise.inject.Alternative;
 
 @Log
-@MotorType("diesel")
+@MotorType("eco")
 @Alternative
-public class DieselEngine implements Engine {
+public class EcoEngine implements Engine {
 
     @Override
     public void start() {
-        log.info("Engine STARTED klkelekleklekelek");
+        log.info("Eco engine STARTED");
     }
 
 }
