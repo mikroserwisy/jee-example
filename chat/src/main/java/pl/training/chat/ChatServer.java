@@ -45,6 +45,7 @@ public class ChatServer {
         var port = Sockets.parsePort(getProperty(CHAT_PORT_PARAMETER_NAME), DEFAULT_CHAT_PORT);
         var eventsBus = new EventsBus();
         eventsBus.addConsumer(new ServerEventsLogger());
+        eventsBus.addConsumer(new MessagesHistoryLogger());
         var server = new ChatServer(eventsBus, newFixedThreadPool(THREADS_COUNT));
         server.start(port);
     }
